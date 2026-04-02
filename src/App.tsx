@@ -18,7 +18,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Separator } from '@/components/ui/separator';
-import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+import { Sheet, SheetContent, SheetTrigger, SheetHeader, SheetTitle, SheetClose } from '@/components/ui/sheet';
 
 const NAV_LINKS = [
   { name: 'Overview', href: '#overview' },
@@ -152,25 +152,34 @@ export default function App() {
                   <Menu className="w-5 h-5" aria-hidden="true" />
                 </Button>
               } />
-              <SheetContent side="right" className="w-[300px] bg-background border-l-2">
-                <div className="flex flex-col gap-8 mt-12">
+              <SheetContent side="right" className="w-[300px] bg-background border-l-2 p-6 flex flex-col">
+                <SheetHeader className="mb-6 mt-4">
+                  <SheetTitle className="font-mono font-bold uppercase tracking-widest text-left text-sm text-muted-foreground">
+                    Navigation
+                  </SheetTitle>
+                </SheetHeader>
+                <div className="flex flex-col gap-4">
                   {NAV_LINKS.map((link) => (
-                    <a 
-                      key={link.name} 
-                      href={link.href} 
-                      className="text-lg font-mono font-bold uppercase tracking-tighter hover:text-accent"
-                    >
-                      {link.name}
-                    </a>
+                    <SheetClose key={link.name} asChild render={
+                      <Button variant="ghost" className="justify-start font-mono text-lg font-bold uppercase tracking-tighter h-14 w-full" render={
+                        <a href={link.href}>
+                          {link.name}
+                        </a>
+                      } />
+                    } />
                   ))}
-                  <Separator />
-                  <div className="flex flex-col gap-4">
-                    <p className="text-[10px] font-mono uppercase text-muted-foreground">Contact</p>
-                    <a href="mailto:attilaszucs2002@gmail.com" className="flex items-center gap-2 text-sm font-mono">
-                      <Mail className="w-4 h-4" aria-hidden="true" />
-                      attilaszucs2002@gmail.com
-                    </a>
-                  </div>
+                </div>
+                <Separator className="my-4" />
+                <div className="flex flex-col gap-4">
+                  <p className="text-[10px] font-mono uppercase text-muted-foreground tracking-widest px-4">Contact</p>
+                  <SheetClose asChild render={
+                    <Button variant="ghost" className="justify-start font-mono text-xs w-full h-12 flex items-center gap-2" render={
+                      <a href="mailto:attilaszucs2002@gmail.com">
+                        <Mail className="w-4 h-4" aria-hidden="true" />
+                        attilaszucs2002@gmail.com
+                      </a>
+                    } />
+                  } />
                 </div>
               </SheetContent>
             </Sheet>
@@ -191,21 +200,21 @@ export default function App() {
                 <Badge variant="outline" className="mb-6 font-mono text-[10px] uppercase tracking-[0.2em] border-accent text-accent px-3 py-1">
                   System Status: Operational
                 </Badge>
-                <h1 className="text-5xl md:text-8xl font-bold tracking-tighter leading-[0.9] mb-8 uppercase">
-                  Cyber <span className="text-accent">Security</span> & <br />
+                <h1 className="text-4xl sm:text-5xl md:text-8xl font-bold tracking-tighter leading-[0.9] mb-8 uppercase">
+                  Cyber <span className="text-accent">Security</span> & <br className="hidden sm:block" />
                   Industrial <span className="blueprint-line">Automation</span>
                 </h1>
                 <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mb-10 leading-relaxed font-medium">
                   Versatile cybersecurity professional with expertise in programming, scripting, and systems administration. Proficient in industrial systems and OT cybersecurity, dedicated to building cyber resilience across critical sectors.
                 </p>
                 
-                <div className="flex flex-wrap gap-4">
-                  <Button className="bg-primary text-primary-foreground hover:bg-accent transition-colors font-mono uppercase tracking-widest text-xs h-12 px-8 rounded-none" render={
+                <div className="flex flex-col sm:flex-row flex-wrap gap-4">
+                  <Button className="w-full sm:w-auto bg-primary text-primary-foreground hover:bg-accent transition-colors font-mono uppercase tracking-widest text-xs h-12 px-8 rounded-none" render={
                     <a href="#skills">
                       View Technical Specs
                     </a>
                   } />
-                  <Button variant="outline" className="border-2 font-mono uppercase tracking-widest text-xs h-12 px-8 rounded-none" render={
+                  <Button variant="outline" className="w-full sm:w-auto border-2 font-mono uppercase tracking-widest text-xs h-12 px-8 rounded-none" render={
                     <a href="https://www.linkedin.com/in/attilapeterszucs/" target="_blank" rel="noopener noreferrer">
                       LinkedIn Profile
                     </a>
@@ -293,7 +302,7 @@ export default function App() {
               
               {Object.entries(SKILLS).map(([category, items]) => (
                 <TabsContent key={category} value={category} className="mt-0">
-                  <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
                     {items.map((skill, index) => (
                       <motion.div
                         key={skill}
@@ -301,7 +310,7 @@ export default function App() {
                         whileInView={{ opacity: 1, scale: 1 }}
                         transition={{ delay: index * 0.05 }}
                         viewport={{ once: true }}
-                        className="tech-border p-6 flex flex-col items-center justify-center text-center bg-background"
+                        className="tech-border p-4 sm:p-6 flex flex-col items-center justify-center text-center bg-background"
                       >
                         <span className="text-[10px] font-mono font-bold uppercase tracking-tighter">{skill}</span>
                       </motion.div>
@@ -386,14 +395,14 @@ export default function App() {
               <p className="text-muted-foreground mb-8 max-w-md">
                 Open for collaborations in Industrial Automation, Software Engineering, and Cyber Security projects.
               </p>
-              <div className="flex flex-wrap gap-4">
-                <Button className="rounded-none font-mono uppercase tracking-widest text-xs h-12 px-8 flex items-center gap-2" render={
+              <div className="flex flex-col sm:flex-row flex-wrap gap-4">
+                <Button className="w-full sm:w-auto rounded-none font-mono uppercase tracking-widest text-xs h-12 px-8 flex items-center justify-center gap-2" render={
                   <a href="mailto:attilaszucs2002@gmail.com">
                     <Mail className="w-4 h-4" aria-hidden="true" />
                     Email Me
                   </a>
                 } />
-                <Button variant="outline" className="border-2 rounded-none font-mono uppercase tracking-widest text-xs h-12 px-8 flex items-center gap-2" render={
+                <Button variant="outline" className="w-full sm:w-auto border-2 rounded-none font-mono uppercase tracking-widest text-xs h-12 px-8 flex items-center justify-center gap-2" render={
                   <a href="https://www.linkedin.com/in/attilapeterszucs/" target="_blank" rel="noopener noreferrer">
                     <Linkedin className="w-4 h-4" aria-hidden="true" />
                     LinkedIn
