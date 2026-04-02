@@ -16,22 +16,18 @@ export default defineConfig(() => {
         output: {
           manualChunks(id) {
             if (id.includes('node_modules')) {
-              if (id.includes('lucide-react')) {
-                return 'lucide-vendor';
-              }
-              if (id.includes('@base-ui')) {
-                return 'base-ui-vendor';
-              }
-              if (id.includes('framer-motion') || id.includes('motion')) {
-                return 'motion-vendor';
-              }
-              if (id.includes('i18next') || id.includes('react-i18next')) {
-                return 'i18n-vendor';
-              }
-              if (id.includes('react') || id.includes('react-dom') || id.includes('scheduler')) {
+              if (id.includes('/node_modules/react/') || id.includes('/node_modules/react-dom/') || id.includes('/node_modules/scheduler/')) {
                 return 'react-vendor';
               }
-              return 'vendor';
+              if (id.includes('/node_modules/motion/') || id.includes('/node_modules/framer-motion/')) {
+                return 'motion-vendor';
+              }
+              if (id.includes('/node_modules/i18next/') || id.includes('/node_modules/react-i18next/')) {
+                return 'i18n-vendor';
+              }
+              if (id.includes('/node_modules/lucide-react/')) {
+                return 'lucide-vendor';
+              }
             }
           },
         },
