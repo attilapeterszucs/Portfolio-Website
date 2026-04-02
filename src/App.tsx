@@ -225,11 +225,11 @@ export default function App() {
                   <div className="flex flex-col gap-2 px-2">
                     <p className="text-[10px] font-mono uppercase text-muted-foreground tracking-widest px-2 mb-2">Language</p>
                     <div className="grid grid-cols-2 gap-2">
-                      <Button variant={i18n.language === 'en' ? 'secondary' : 'ghost'} size="sm" className="justify-start font-mono text-xs uppercase rounded-none" onClick={() => changeLanguage('en')}>EN</Button>
-                      <Button variant={i18n.language === 'hu' ? 'secondary' : 'ghost'} size="sm" className="justify-start font-mono text-xs uppercase rounded-none" onClick={() => changeLanguage('hu')}>HU</Button>
-                      <Button variant={i18n.language === 'ja' ? 'secondary' : 'ghost'} size="sm" className="justify-start font-mono text-xs uppercase rounded-none" onClick={() => changeLanguage('ja')}>JA</Button>
-                      <Button variant={i18n.language === 'ko' ? 'secondary' : 'ghost'} size="sm" className="justify-start font-mono text-xs uppercase rounded-none" onClick={() => changeLanguage('ko')}>KO</Button>
-                      <Button variant={i18n.language === 'ar' ? 'secondary' : 'ghost'} size="sm" className="justify-start font-mono text-xs uppercase rounded-none" onClick={() => changeLanguage('ar')}>AR</Button>
+                      <Button variant={i18n.language === 'en' ? 'secondary' : 'ghost'} size="sm" aria-label="Switch to English" className="justify-start font-mono text-xs uppercase rounded-none" onClick={() => changeLanguage('en')}>EN</Button>
+                      <Button variant={i18n.language === 'hu' ? 'secondary' : 'ghost'} size="sm" aria-label="Switch to Hungarian" className="justify-start font-mono text-xs uppercase rounded-none" onClick={() => changeLanguage('hu')}>HU</Button>
+                      <Button variant={i18n.language === 'ja' ? 'secondary' : 'ghost'} size="sm" aria-label="Switch to Japanese" className="justify-start font-mono text-xs uppercase rounded-none" onClick={() => changeLanguage('ja')}>JA</Button>
+                      <Button variant={i18n.language === 'ko' ? 'secondary' : 'ghost'} size="sm" aria-label="Switch to Korean" className="justify-start font-mono text-xs uppercase rounded-none" onClick={() => changeLanguage('ko')}>KO</Button>
+                      <Button variant={i18n.language === 'ar' ? 'secondary' : 'ghost'} size="sm" aria-label="Switch to Arabic" className="justify-start font-mono text-xs uppercase rounded-none" onClick={() => changeLanguage('ar')}>AR</Button>
                     </div>
                   </div>
                 </div>
@@ -292,12 +292,12 @@ export default function App() {
                 
                 <div className="flex flex-col sm:flex-row flex-wrap gap-4">
                   <Button className="w-full sm:w-auto bg-primary text-primary-foreground hover:bg-accent transition-colors font-mono uppercase tracking-widest text-xs h-12 px-8 rounded-none" render={
-                    <a href="#skills">
+                    <a href="#skills" aria-label="View Skills">
                       {t('hero_btn_specs')}
                     </a>
                   } />
                   <Button variant="outline" className="w-full sm:w-auto border-2 font-mono uppercase tracking-widest text-xs h-12 px-8 rounded-none" render={
-                    <a href="https://www.linkedin.com/in/attilapeterszucs/" target="_blank" rel="noopener noreferrer">
+                    <a href="https://www.linkedin.com/in/attilapeterszucs/" target="_blank" rel="noopener noreferrer" aria-label="Connect with Attila on LinkedIn">
                       {t('hero_btn_linkedin')}
                     </a>
                   } />
