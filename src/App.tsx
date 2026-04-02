@@ -64,10 +64,10 @@ const PROJECTS = [
     link: 'https://github.com/attilapeterszucs/Aqua-Topia'
   },
   {
-    title: 'Kryptonite-SCM',
-    description: 'A comprehensive desktop application for supply chain management, featuring a robust architecture for managing logistics and inventory.',
-    tags: ['TypeScript', 'Electron', 'React', 'PostgreSQL'],
-    link: 'https://github.com/attilapeterszucs/Kryptonite-SCM'
+    title: 'Haltless',
+    description: 'Proprietary AI-driven predictive maintenance platform for industrial manufacturing. Features real-time Modbus/OPC-UA edge collection, LLM-powered anomaly detection, and enterprise CMMS capabilities.',
+    tags: ['Python', 'React', 'PostgreSQL', 'Industrial IoT'],
+    link: 'https://github.com/attilapeterszucs/Haltless'
   },
   {
     title: 'Secure-LogiX',
