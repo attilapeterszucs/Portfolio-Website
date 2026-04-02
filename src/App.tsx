@@ -23,6 +23,7 @@ import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Separator } from '@/components/ui/separator';
 import { Sheet, SheetContent, SheetTrigger, SheetHeader, SheetTitle, SheetClose } from '@/components/ui/sheet';
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
 
 const SKILLS = {
   'Cyber Security': [
@@ -174,18 +175,21 @@ export default function App() {
 
           <div className="flex items-center gap-4">
             <div className="relative group hidden sm:flex items-center">
-              <Globe className="w-4 h-4 mr-2 text-muted-foreground" aria-hidden="true" />
-              <select 
-                onChange={(e) => changeLanguage(e.target.value)} 
-                defaultValue={i18n.language}
-                className="bg-transparent text-[10px] font-mono uppercase tracking-widest outline-none cursor-pointer border-b-2 border-transparent hover:border-accent transition-colors pb-1"
-              >
-                <option className="bg-background text-foreground" value="en">EN</option>
-                <option className="bg-background text-foreground" value="hu">HU</option>
-                <option className="bg-background text-foreground" value="ja">JA</option>
-                <option className="bg-background text-foreground" value="ko">KO</option>
-                <option className="bg-background text-foreground" value="ar">AR</option>
-              </select>
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button variant="ghost" size="sm" className="hidden sm:flex font-mono text-[10px] uppercase tracking-widest gap-2 rounded-none px-2 border-b-2 border-transparent hover:border-accent hover:bg-transparent">
+                    <Globe className="w-4 h-4 text-muted-foreground" aria-hidden="true" />
+                    {i18n.language.toUpperCase()}
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end" className="rounded-none border-2 bg-background font-mono text-xs tracking-widest uppercase">
+                  <DropdownMenuItem onClick={() => changeLanguage('en')} className="cursor-pointer rounded-none focus:bg-accent focus:text-accent-foreground">EN</DropdownMenuItem>
+                  <DropdownMenuItem onClick={() => changeLanguage('hu')} className="cursor-pointer rounded-none focus:bg-accent focus:text-accent-foreground">HU</DropdownMenuItem>
+                  <DropdownMenuItem onClick={() => changeLanguage('ja')} className="cursor-pointer rounded-none focus:bg-accent focus:text-accent-foreground">JA</DropdownMenuItem>
+                  <DropdownMenuItem onClick={() => changeLanguage('ko')} className="cursor-pointer rounded-none focus:bg-accent focus:text-accent-foreground">KO</DropdownMenuItem>
+                  <DropdownMenuItem onClick={() => changeLanguage('ar')} className="cursor-pointer rounded-none focus:bg-accent focus:text-accent-foreground">AR</DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
             </div>
 
             <Button variant="outline" size="sm" className="hidden sm:flex font-mono text-[10px] uppercase tracking-widest border-2" render={
@@ -218,19 +222,15 @@ export default function App() {
                     } />
                   ))}
                   <Separator className="my-2" />
-                  <div className="flex items-center gap-2 px-4">
-                    <Globe className="w-4 h-4 text-muted-foreground" aria-hidden="true" />
-                    <select 
-                      onChange={(e) => changeLanguage(e.target.value)} 
-                      defaultValue={i18n.language}
-                      className="bg-transparent text-sm font-mono uppercase tracking-widest outline-none cursor-pointer w-full py-2"
-                    >
-                      <option className="bg-background text-foreground" value="en">English (EN)</option>
-                      <option className="bg-background text-foreground" value="hu">Magyar (HU)</option>
-                      <option className="bg-background text-foreground" value="ja">日本語 (JA)</option>
-                      <option className="bg-background text-foreground" value="ko">한국어 (KO)</option>
-                      <option className="bg-background text-foreground" value="ar">العربية (AR)</option>
-                    </select>
+                  <div className="flex flex-col gap-2 px-2">
+                    <p className="text-[10px] font-mono uppercase text-muted-foreground tracking-widest px-2 mb-2">Language</p>
+                    <div className="grid grid-cols-2 gap-2">
+                      <Button variant={i18n.language === 'en' ? 'secondary' : 'ghost'} size="sm" className="justify-start font-mono text-xs uppercase rounded-none" onClick={() => changeLanguage('en')}>EN</Button>
+                      <Button variant={i18n.language === 'hu' ? 'secondary' : 'ghost'} size="sm" className="justify-start font-mono text-xs uppercase rounded-none" onClick={() => changeLanguage('hu')}>HU</Button>
+                      <Button variant={i18n.language === 'ja' ? 'secondary' : 'ghost'} size="sm" className="justify-start font-mono text-xs uppercase rounded-none" onClick={() => changeLanguage('ja')}>JA</Button>
+                      <Button variant={i18n.language === 'ko' ? 'secondary' : 'ghost'} size="sm" className="justify-start font-mono text-xs uppercase rounded-none" onClick={() => changeLanguage('ko')}>KO</Button>
+                      <Button variant={i18n.language === 'ar' ? 'secondary' : 'ghost'} size="sm" className="justify-start font-mono text-xs uppercase rounded-none" onClick={() => changeLanguage('ar')}>AR</Button>
+                    </div>
                   </div>
                 </div>
                 <Separator className="my-4" />
