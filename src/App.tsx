@@ -409,21 +409,27 @@ export default function App() {
                   transition={{ delay: index * 0.1 }}
                   viewport={{ once: true }}
                 >
-                  <Card className="h-full rounded-none border-2 bg-background hover:border-accent transition-colors group relative flex flex-col">
+                  <Card 
+                    className="h-full rounded-none border-2 bg-background hover:border-accent transition-colors group relative flex flex-col cursor-pointer"
+                    onClick={() => {
+                      const url = project.live || project.link;
+                      if (url) window.open(url, '_blank', 'noopener,noreferrer');
+                    }}
+                  >
                     <CardHeader>
                       <CardTitle className="text-xl font-bold uppercase tracking-tight flex items-center justify-between">
                         {project.title}
                         <div className="flex items-center gap-1">
                           {project.live && (
-                            <Button variant="ghost" size="icon" className="w-8 h-8 rounded-none hover:bg-accent hover:text-accent-foreground transition-colors" render={
-                              <a href={project.live} target="_blank" rel="noopener noreferrer" aria-label={`View live site for ${project.title}`}>
+                            <Button variant="ghost" size="icon" className="w-8 h-8 rounded-none hover:bg-accent hover:text-accent-foreground transition-colors z-10 relative" render={
+                              <a href={project.live} target="_blank" rel="noopener noreferrer" aria-label={`View live site for ${project.title}`} onClick={(e) => e.stopPropagation()}>
                                 <ExternalLink className="w-4 h-4" aria-hidden="true" />
                               </a>
                             } />
                           )}
                           {project.link && (
-                            <Button variant="ghost" size="icon" className="w-8 h-8 rounded-none hover:bg-accent hover:text-accent-foreground transition-colors" render={
-                              <a href={project.link} target="_blank" rel="noopener noreferrer" aria-label={`View ${project.title} on GitHub`}>
+                            <Button variant="ghost" size="icon" className="w-8 h-8 rounded-none hover:bg-accent hover:text-accent-foreground transition-colors z-10 relative" render={
+                              <a href={project.link} target="_blank" rel="noopener noreferrer" aria-label={`View ${project.title} on GitHub`} onClick={(e) => e.stopPropagation()}>
                                 <Github className="w-4 h-4" aria-hidden="true" />
                               </a>
                             } />
