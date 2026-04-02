@@ -13,6 +13,7 @@ import {
   Settings,
   ArrowUp,
   Github,
+  ExternalLink,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -67,7 +68,8 @@ const PROJECTS = [
     title: 'Haltless',
     description: 'Proprietary AI-driven predictive maintenance platform for industrial manufacturing. Features real-time Modbus/OPC-UA edge collection, LLM-powered anomaly detection, and enterprise CMMS capabilities.',
     tags: ['Python', 'React', 'PostgreSQL', 'Industrial IoT'],
-    link: 'https://github.com/attilapeterszucs/Haltless'
+    link: 'https://github.com/attilapeterszucs/Haltless',
+    live: 'https://www.haltless.io'
   },
   {
     title: 'Secure-LogiX',
@@ -346,11 +348,20 @@ export default function App() {
                     <CardHeader>
                       <CardTitle className="text-xl font-bold uppercase tracking-tight flex items-center justify-between">
                         {project.title}
-                        <Button variant="ghost" size="icon" className="w-8 h-8 rounded-none group-hover:bg-accent group-hover:text-accent-foreground transition-colors" render={
-                          <a href={project.link} target="_blank" rel="noopener noreferrer" aria-label={`View ${project.title} on GitHub`}>
-                            <Github className="w-4 h-4" aria-hidden="true" />
-                          </a>
-                        } />
+                        <div className="flex items-center gap-1">
+                          {project.live && (
+                            <Button variant="ghost" size="icon" className="w-8 h-8 rounded-none hover:bg-accent hover:text-accent-foreground transition-colors" render={
+                              <a href={project.live} target="_blank" rel="noopener noreferrer" aria-label={`View live site for ${project.title}`}>
+                                <ExternalLink className="w-4 h-4" aria-hidden="true" />
+                              </a>
+                            } />
+                          )}
+                          <Button variant="ghost" size="icon" className="w-8 h-8 rounded-none hover:bg-accent hover:text-accent-foreground transition-colors" render={
+                            <a href={project.link} target="_blank" rel="noopener noreferrer" aria-label={`View ${project.title} on GitHub`}>
+                              <Github className="w-4 h-4" aria-hidden="true" />
+                            </a>
+                          } />
+                        </div>
                       </CardTitle>
                     </CardHeader>
                     <CardContent className="flex-grow flex flex-col justify-between">
