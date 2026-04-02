@@ -224,7 +224,7 @@ export default function App() {
                   Industrial <span className="blueprint-line">Automation</span>
                 </h1>
                 <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mb-10 leading-relaxed font-medium">
-                  Versatile cybersecurity professional with expertise in programming, scripting, and systems administration. Proficient in industrial systems and OT cybersecurity, dedicated to building cyber resilience across critical sectors.
+                  Cyber security student and former automation technician with hands-on experience in OT security, penetration testing, and industrial equipment maintenance. Focused on bridging the gap between physical electrical systems and digital security.
                 </p>
                 
                 <div className="flex flex-col sm:flex-row flex-wrap gap-4">
@@ -302,7 +302,7 @@ export default function App() {
               <p className="text-[10px] font-mono uppercase tracking-[0.3em] text-accent mb-2">Technical Stack</p>
               <h2 className="text-4xl md:text-5xl font-bold tracking-tighter uppercase mb-6">Core Competencies</h2>
               <p className="text-muted-foreground">
-                A unique blend of industrial engineering and computer science. Expert in designing, implementing, and securing complex systems.
+                Combining a foundation in electrical and automation engineering with applied computer science. Focused on securing industrial control systems and enterprise networks.
               </p>
             </div>
 
