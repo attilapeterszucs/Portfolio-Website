@@ -307,12 +307,12 @@ export default function App() {
             </div>
 
             <Tabs defaultValue="Industrial" className="w-full">
-              <TabsList className="bg-secondary p-1 rounded-none h-auto flex flex-wrap justify-start gap-2 mb-12">
+              <TabsList className="bg-secondary p-1 rounded-none flex overflow-x-auto justify-start gap-2 mb-12 w-full [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
                 {Object.keys(SKILLS).map((category) => (
                   <TabsTrigger 
                     key={category} 
                     value={category}
-                    className="rounded-none font-mono text-[10px] uppercase tracking-widest px-6 py-3 data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
+                    className="rounded-none font-mono text-[10px] uppercase tracking-widest px-6 py-3 data-[state=active]:bg-primary data-[state=active]:text-primary-foreground whitespace-nowrap flex-shrink-0"
                   >
                     {category}
                   </TabsTrigger>
@@ -321,7 +321,7 @@ export default function App() {
               
               {Object.entries(SKILLS).map(([category, items]) => (
                 <TabsContent key={category} value={category} className="mt-0">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+                  <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4">
                     {items.map((skill, index) => (
                       <motion.div
                         key={skill}
@@ -329,7 +329,7 @@ export default function App() {
                         whileInView={{ opacity: 1, scale: 1 }}
                         transition={{ delay: index * 0.05 }}
                         viewport={{ once: true }}
-                        className="tech-border p-4 sm:p-6 flex flex-col items-center justify-center text-center bg-background"
+                        className="tech-border p-3 sm:p-6 flex flex-col items-center justify-center text-center bg-background min-h-[80px]"
                       >
                         <span className="text-[10px] font-mono font-bold uppercase tracking-tighter">{skill}</span>
                       </motion.div>
