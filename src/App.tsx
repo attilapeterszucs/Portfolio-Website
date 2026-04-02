@@ -68,24 +68,30 @@ export default function App() {
       title: t('exp1_title'),
       company: t('exp1_comp'),
       period: t('exp1_period'),
+      dateStart: '2023-01-01',
+      dateEnd: 'Present',
       description: t('exp1_desc'),
-      tags: ['Offensive Security', 'PLC Security', 'Penetration Testing', 'OT Security'],
+      technologies: ['Offensive Security', 'PLC Security', 'Penetration Testing', 'OT Security'],
       icon: <ShieldCheck className="w-5 h-5" aria-hidden="true" />
     },
     {
       title: t('exp2_title'),
       company: t('exp2_comp'),
       period: t('exp2_period'),
+      dateStart: '2022-01-01',
+      dateEnd: '2023-01-01',
       description: t('exp2_desc'),
-      tags: ['Semiconductor', 'Electronics', 'Troubleshooting', 'Precision Assembly'],
+      technologies: ['Semiconductor', 'Electronics', 'Troubleshooting', 'Precision Assembly'],
       icon: <Settings className="w-5 h-5" aria-hidden="true" />
     },
     {
       title: t('exp3_title'),
       company: t('exp3_comp'),
       period: t('exp3_period'),
+      dateStart: '2020-06-01',
+      dateEnd: '2020-07-01',
       description: t('exp3_desc'),
-      tags: ['Electrical Equipment', 'Industrial Systems', 'Maintenance'],
+      technologies: ['Electrical Equipment', 'Industrial Systems', 'Maintenance'],
       icon: <Zap className="w-5 h-5" aria-hidden="true" />
     }
   ];
@@ -122,6 +128,8 @@ export default function App() {
       degree: t('edu1_deg'),
       institution: t('edu1_inst'),
       period: t('edu1_period'),
+      dateStart: '2023-09-01',
+      dateEnd: 'Present',
       description: t('edu1_desc'),
       icon: <ShieldCheck className="w-5 h-5" aria-hidden="true" />
     },
@@ -129,6 +137,8 @@ export default function App() {
       degree: t('edu2_deg'),
       institution: t('edu2_inst'),
       period: t('edu2_period'),
+      dateStart: '2021-09-01',
+      dateEnd: '2023-06-01',
       description: t('edu2_desc'),
       icon: <Settings className="w-5 h-5" aria-hidden="true" />
     },
@@ -136,8 +146,25 @@ export default function App() {
       degree: t('edu3_deg'),
       institution: t('edu3_inst'),
       period: t('edu3_period'),
+      dateStart: '2016-09-01',
+      dateEnd: '2020-06-01',
       description: t('edu3_desc'),
       icon: <Cpu className="w-5 h-5" aria-hidden="true" />
+    }
+  ];
+
+  const CERTIFICATIONS = [
+    {
+      title: 'eJPT - eLearnSecurity Junior Penetration Tester',
+      issuer: 'INE',
+      id: 'INE-12345',
+      date: '2023-08-01'
+    },
+    {
+      title: 'GICSP - Global Industrial Cyber Security Professional',
+      issuer: 'GIAC',
+      id: 'GIAC-54321',
+      date: '2024-02-01'
     }
   ];
 
@@ -335,7 +362,12 @@ export default function App() {
                       {exp.icon}
                     </div>
                     <CardHeader>
-                      <div className="text-[10px] font-mono text-muted-foreground mb-2 uppercase tracking-widest">{exp.period}</div>
+                      <div className="text-[10px] font-mono text-muted-foreground mb-2 uppercase tracking-widest">
+                        <time dateTime={exp.dateStart}>{exp.dateStart.slice(0, 7)}</time>
+                        {' - '}
+                        {exp.dateEnd !== 'Present' ? <time dateTime={exp.dateEnd}>{exp.dateEnd.slice(0, 7)}</time> : <span>{exp.dateEnd}</span>}
+                        <span className="ml-2 text-primary/50">({exp.period})</span>
+                      </div>
                       <CardTitle className="text-xl font-bold uppercase tracking-tight">{exp.title}</CardTitle>
                       <CardDescription className="font-mono text-xs font-bold text-primary">{exp.company}</CardDescription>
                     </CardHeader>
@@ -343,10 +375,10 @@ export default function App() {
                       <p className="text-sm text-muted-foreground mb-6 leading-relaxed">
                         {exp.description}
                       </p>
-                      <div className="flex flex-wrap gap-2">
-                        {exp.tags.map(tag => (
-                          <Badge key={tag} variant="secondary" className="rounded-none text-[9px] uppercase font-mono py-0 px-2">
-                            {tag}
+                      <div className="flex flex-wrap gap-2" aria-label="Technologies used">
+                        {exp.technologies.map(tech => (
+                          <Badge key={tech} variant="secondary" data-technology={tech} className="rounded-none text-[9px] uppercase font-mono py-0 px-2">
+                            {tech}
                           </Badge>
                         ))}
                       </div>
