@@ -150,9 +150,6 @@ export default function App() {
       <header className={`fixed top-0 w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-background/80 backdrop-blur-md border-b py-3' : 'bg-transparent py-6'}`}>
         <div className="container mx-auto px-6 flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-primary flex items-center justify-center">
-              <span className="text-primary-foreground font-mono font-bold text-xs">AS</span>
-            </div>
             <span className="font-mono font-bold tracking-tighter text-lg uppercase hidden sm:block">Attila Peter Szucs</span>
           </div>
 
@@ -536,9 +533,6 @@ export default function App() {
             
             <div className="flex flex-col md:flex-row justify-between items-center gap-6">
               <div className="flex items-center gap-2">
-                <div className="w-6 h-6 bg-primary flex items-center justify-center">
-                  <span className="text-primary-foreground font-mono font-bold text-[10px]">AS</span>
-                </div>
                 <span className="font-mono font-bold tracking-tighter text-sm uppercase">Attila Peter Szucs</span>
               </div>
               <p className="text-[10px] font-mono text-muted-foreground uppercase tracking-widest">
