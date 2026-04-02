@@ -243,7 +243,7 @@ export default function App() {
                 transition={{ duration: 0.6 }}
               >
                 <Badge variant="outline" className="mb-6 font-mono text-[10px] uppercase tracking-[0.2em] border-accent text-accent px-3 py-1">
-                  System Status: Operational
+                  No system is safe
                 </Badge>
                 <h1 className="text-4xl sm:text-5xl md:text-8xl font-bold tracking-tighter leading-[0.9] mb-8 uppercase">
                   Cyber <span className="text-accent">Security</span> & <br className="hidden sm:block" />
