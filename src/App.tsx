@@ -24,6 +24,7 @@ import { Sheet, SheetContent, SheetTrigger, SheetHeader, SheetTitle, SheetClose 
 const NAV_LINKS = [
   { name: 'Overview', href: '#overview' },
   { name: 'Experience', href: '#experience' },
+  { name: 'Projects', href: '#projects' },
   { name: 'Technical Skills', href: '#skills' },
   { name: 'Education', href: '#education' },
 ];
@@ -52,6 +53,33 @@ const EXPERIENCE = [
     description: 'Gained extensive experience with electrical equipment and industrial systems in a professional environment.',
     tags: ['Electrical Equipment', 'Industrial Systems', 'Maintenance'],
     icon: <Zap className="w-5 h-5" aria-hidden="true" />
+  }
+];
+
+const PROJECTS = [
+  {
+    title: 'Aqua-Topia',
+    description: 'A comprehensive solution for the HTF 2025 challenge, demonstrating enterprise-grade infrastructure automation and secure application deployment practices.',
+    tags: ['Shell', 'Automation', 'Infrastructure'],
+    link: 'https://github.com/attilapeterszucs/Aqua-Topia'
+  },
+  {
+    title: 'Kryptonite-SCM',
+    description: 'A comprehensive desktop application for supply chain management, featuring a robust architecture for managing logistics and inventory.',
+    tags: ['TypeScript', 'Electron', 'React', 'PostgreSQL'],
+    link: 'https://github.com/attilapeterszucs/Kryptonite-SCM'
+  },
+  {
+    title: 'Secure-LogiX',
+    description: 'An enterprise-grade, maximum-security desktop application designed for managing classified documents and sensitive information with military-grade security standards.',
+    tags: ['TypeScript', 'Electron.js', 'Security'],
+    link: 'https://github.com/attilapeterszucs/Secure-LogiX'
+  },
+  {
+    title: 'TraceFlow',
+    description: 'A high-performance, real-time Terminal User Interface (TUI) application designed to visualize and audit machine network traffic.',
+    tags: ['Rust', 'TUI', 'Networking', 'Security Audit'],
+    link: 'https://github.com/attilapeterszucs/TraceFlow'
   }
 ];
 
@@ -291,6 +319,64 @@ export default function App() {
                   </Card>
                 </motion.div>
               ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Projects Section */}
+        <section id="projects" className="py-24">
+          <div className="container mx-auto px-6">
+            <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-4">
+              <div>
+                <p className="text-[10px] font-mono uppercase tracking-[0.3em] text-accent mb-2">Portfolio</p>
+                <h2 className="text-4xl md:text-5xl font-bold tracking-tighter uppercase">Featured Projects</h2>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {PROJECTS.map((project, index) => (
+                <motion.div
+                  key={project.title}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                >
+                  <Card className="h-full rounded-none border-2 bg-background hover:border-accent transition-colors group relative flex flex-col">
+                    <CardHeader>
+                      <CardTitle className="text-xl font-bold uppercase tracking-tight flex items-center justify-between">
+                        {project.title}
+                        <Button variant="ghost" size="icon" className="w-8 h-8 rounded-none group-hover:bg-accent group-hover:text-accent-foreground transition-colors" render={
+                          <a href={project.link} target="_blank" rel="noopener noreferrer" aria-label={`View ${project.title} on GitHub`}>
+                            <Github className="w-4 h-4" aria-hidden="true" />
+                          </a>
+                        } />
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent className="flex-grow flex flex-col justify-between">
+                      <p className="text-sm text-muted-foreground mb-6 leading-relaxed">
+                        {project.description}
+                      </p>
+                      <div className="flex flex-wrap gap-2 mt-auto">
+                        {project.tags.map(tag => (
+                          <Badge key={tag} variant="secondary" className="rounded-none text-[9px] uppercase font-mono py-0 px-2">
+                            {tag}
+                          </Badge>
+                        ))}
+                      </div>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              ))}
+            </div>
+            
+            <div className="mt-12 text-center">
+              <Button variant="outline" className="border-2 font-mono uppercase tracking-widest text-xs h-12 px-8 rounded-none group" render={
+                <a href="https://github.com/attilapeterszucs" target="_blank" rel="noopener noreferrer">
+                  <Github className="w-4 h-4 mr-2 group-hover:animate-pulse" aria-hidden="true" />
+                  View All on GitHub
+                </a>
+              } />
             </div>
           </div>
         </section>
