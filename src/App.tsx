@@ -306,38 +306,36 @@ export default function App() {
               </p>
             </div>
 
-            <Tabs defaultValue="Industrial" className="w-full">
-              <TabsList className="bg-secondary p-1 rounded-none flex overflow-x-auto justify-start gap-2 mb-12 w-full [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
-                {Object.keys(SKILLS).map((category) => (
-                  <TabsTrigger 
-                    key={category} 
-                    value={category}
-                    className="rounded-none font-mono text-[10px] uppercase tracking-widest px-6 py-3 data-[state=active]:bg-primary data-[state=active]:text-primary-foreground whitespace-nowrap flex-shrink-0"
-                  >
-                    {category}
-                  </TabsTrigger>
-                ))}
-              </TabsList>
-              
-              {Object.entries(SKILLS).map(([category, items]) => (
-                <TabsContent key={category} value={category} className="mt-0">
-                  <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4">
-                    {items.map((skill, index) => (
-                      <motion.div
-                        key={skill}
-                        initial={{ opacity: 0, scale: 0.95 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        transition={{ delay: index * 0.05 }}
-                        viewport={{ once: true }}
-                        className="tech-border p-3 sm:p-6 flex flex-col items-center justify-center text-center bg-background min-h-[80px]"
-                      >
-                        <span className="text-[10px] font-mono font-bold uppercase tracking-tighter">{skill}</span>
-                      </motion.div>
-                    ))}
-                  </div>
-                </TabsContent>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {Object.entries(SKILLS).map(([category, items], index) => (
+                <motion.div
+                  key={category}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                >
+                  <Card className="h-full rounded-none border-2 bg-background hover:border-accent transition-colors">
+                    <CardHeader className="border-b-2 bg-secondary/30 pb-4">
+                      <CardTitle className="text-xl font-bold uppercase tracking-tight">{category}</CardTitle>
+                    </CardHeader>
+                    <CardContent className="pt-6">
+                      <div className="flex flex-wrap gap-2">
+                        {items.map((skill) => (
+                          <Badge 
+                            key={skill} 
+                            variant="outline" 
+                            className="rounded-none text-[10px] sm:text-xs font-mono py-1 px-3 border-accent/50 hover:bg-accent hover:text-accent-foreground transition-colors"
+                          >
+                            {skill}
+                          </Badge>
+                        ))}
+                      </div>
+                    </CardContent>
+                  </Card>
+                </motion.div>
               ))}
-            </Tabs>
+            </div>
           </div>
         </section>
 
