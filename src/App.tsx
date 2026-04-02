@@ -518,6 +518,12 @@ export default function App() {
                   </a>
                 } />
                 <Button variant="outline" className="w-full sm:w-auto border-2 rounded-none font-mono uppercase tracking-widest text-xs h-12 px-8 flex items-center justify-center gap-2" render={
+                  <a href="https://github.com/attilapeterszucs" target="_blank" rel="noopener noreferrer">
+                    <Github className="w-4 h-4" aria-hidden="true" />
+                    GitHub
+                  </a>
+                } />
+                <Button variant="outline" className="w-full sm:w-auto border-2 rounded-none font-mono uppercase tracking-widest text-xs h-12 px-8 flex items-center justify-center gap-2" render={
                   <a href="https://www.linkedin.com/in/attilapeterszucs/" target="_blank" rel="noopener noreferrer">
                     <Linkedin className="w-4 h-4" aria-hidden="true" />
                     LinkedIn
