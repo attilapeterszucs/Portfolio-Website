@@ -68,7 +68,6 @@ const PROJECTS = [
     title: 'Haltless',
     description: 'Proprietary AI-driven predictive maintenance platform for industrial manufacturing. Features real-time Modbus/OPC-UA edge collection, LLM-powered anomaly detection, and enterprise CMMS capabilities.',
     tags: ['Python', 'React', 'PostgreSQL', 'Industrial IoT'],
-    link: 'https://github.com/attilapeterszucs/Haltless',
     live: 'https://www.haltless.io'
   },
   {
@@ -356,11 +355,13 @@ export default function App() {
                               </a>
                             } />
                           )}
-                          <Button variant="ghost" size="icon" className="w-8 h-8 rounded-none hover:bg-accent hover:text-accent-foreground transition-colors" render={
-                            <a href={project.link} target="_blank" rel="noopener noreferrer" aria-label={`View ${project.title} on GitHub`}>
-                              <Github className="w-4 h-4" aria-hidden="true" />
-                            </a>
-                          } />
+                          {project.link && (
+                            <Button variant="ghost" size="icon" className="w-8 h-8 rounded-none hover:bg-accent hover:text-accent-foreground transition-colors" render={
+                              <a href={project.link} target="_blank" rel="noopener noreferrer" aria-label={`View ${project.title} on GitHub`}>
+                                <Github className="w-4 h-4" aria-hidden="true" />
+                              </a>
+                            } />
+                          )}
                         </div>
                       </CardTitle>
                     </CardHeader>
