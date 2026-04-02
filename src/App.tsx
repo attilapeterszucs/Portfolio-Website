@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
+import { useTranslation } from 'react-i18next';
 import { 
   Cpu, 
   Zap, 
@@ -14,6 +15,7 @@ import {
   ArrowUp,
   Github,
   ExternalLink,
+  Globe,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -21,92 +23,6 @@ import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Separator } from '@/components/ui/separator';
 import { Sheet, SheetContent, SheetTrigger, SheetHeader, SheetTitle, SheetClose } from '@/components/ui/sheet';
-
-const NAV_LINKS = [
-  { name: 'Overview', href: '#overview' },
-  { name: 'Experience', href: '#experience' },
-  { name: 'Projects', href: '#projects' },
-  { name: 'Technical Skills', href: '#skills' },
-  { name: 'Education', href: '#education' },
-];
-
-const EXPERIENCE = [
-  {
-    title: 'Internship Cyber Defense Factory',
-    company: 'Cyber3Lab, HOWEST Brugge',
-    period: 'Recent',
-    description: 'Military-founded research. Performed offensive and defensive security research on industrial equipment (PLC) and offensive security/penetration testing on websites.',
-    tags: ['Offensive Security', 'PLC Security', 'Penetration Testing', 'OT Security'],
-    icon: <ShieldCheck className="w-5 h-5" aria-hidden="true" />
-  },
-  {
-    title: 'Electrical Technician',
-    company: 'Semilab Zrt.',
-    period: 'Jan 2022 - Jan 2023',
-    description: 'Assembled high-precision semiconductor equipment, troubleshot and repaired products, and gained valuable experience in electronics and cutting-edge technology.',
-    tags: ['Semiconductor', 'Electronics', 'Troubleshooting', 'Precision Assembly'],
-    icon: <Settings className="w-5 h-5" aria-hidden="true" />
-  },
-  {
-    title: 'Internship',
-    company: 'Green Lab Kft.',
-    period: 'June 2020 - July 2020',
-    description: 'Gained extensive experience with electrical equipment and industrial systems in a professional environment.',
-    tags: ['Electrical Equipment', 'Industrial Systems', 'Maintenance'],
-    icon: <Zap className="w-5 h-5" aria-hidden="true" />
-  }
-];
-
-const PROJECTS = [
-  {
-    title: 'Aqua-Topia',
-    description: 'A comprehensive solution for the HTF 2025 challenge, demonstrating enterprise-grade infrastructure automation and secure application deployment practices.',
-    tags: ['Shell', 'Automation', 'Infrastructure'],
-    link: 'https://github.com/attilapeterszucs/Aqua-Topia'
-  },
-  {
-    title: 'Haltless',
-    description: 'Proprietary AI-driven predictive maintenance platform for industrial manufacturing. Features real-time Modbus/OPC-UA edge collection, LLM-powered anomaly detection, and enterprise CMMS capabilities.',
-    tags: ['Python', 'React', 'PostgreSQL', 'Industrial IoT'],
-    live: 'https://www.haltless.io'
-  },
-  {
-    title: 'Secure-LogiX',
-    description: 'An enterprise-grade, maximum-security desktop application designed for managing classified documents and sensitive information with military-grade security standards.',
-    tags: ['TypeScript', 'Electron.js', 'Security'],
-    link: 'https://github.com/attilapeterszucs/Secure-LogiX'
-  },
-  {
-    title: 'TraceFlow',
-    description: 'A high-performance, real-time Terminal User Interface (TUI) application designed to visualize and audit machine network traffic.',
-    tags: ['Rust', 'TUI', 'Networking', 'Security Audit'],
-    link: 'https://github.com/attilapeterszucs/TraceFlow'
-  }
-];
-
-const EDUCATION = [
-  {
-    degree: 'BSc in Applied Computer Science - Major Cyber Security',
-    institution: 'University of Applied Sciences West Flanders (HOWEST)',
-    period: 'Sept 2023 - Current',
-    description: 'Relevant Coursework: Web & Network Penetration Testing, Digital Forensics, Security Risk Management, Secure Development, Cybercrime.',
-    icon: <ShieldCheck className="w-5 h-5" aria-hidden="true" />
-  },
-  {
-    degree: 'Automation Technician: Industrial Automation',
-    institution: 'BGSZC Mechatronika Vocational High School',
-    period: 'Jan 2017 - Jan 2022',
-    description: 'Comprehensive training in industrial automation systems, electronics, and mechanical systems.',
-    icon: <Settings className="w-5 h-5" aria-hidden="true" />
-  },
-  {
-    degree: 'PLC Programmer: Automation Technology',
-    institution: 'BGSZC Mechatronika Technikum',
-    period: 'Jan 2020 - Jan 2021',
-    description: 'Specialized certification in PLC programming and automation logic.',
-    icon: <Cpu className="w-5 h-5" aria-hidden="true" />
-  }
-];
 
 const SKILLS = {
   'Cyber Security': [
@@ -124,22 +40,113 @@ const SKILLS = {
   ]
 };
 
-const LANGUAGES = [
-  { name: 'English', level: 'Upper Intermediate (B2)' },
-  { name: 'Hungarian', level: 'Native' },
-  { name: 'Japanese', level: 'Beginner' },
-  { name: 'Korean', level: 'Beginner' },
-  { name: 'Arabic', level: 'Beginner (Actively Learning)' }
-];
-
 export default function App() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const { t, i18n } = useTranslation();
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const changeLanguage = (lng: string) => {
+    i18n.changeLanguage(lng);
+  };
+
+  const NAV_LINKS = [
+    { name: t('nav_overview'), href: '#overview' },
+    { name: t('nav_experience'), href: '#experience' },
+    { name: t('nav_projects'), href: '#projects' },
+    { name: t('nav_skills'), href: '#skills' },
+    { name: t('nav_education'), href: '#education' },
+  ];
+
+  const EXPERIENCE = [
+    {
+      title: t('exp1_title'),
+      company: t('exp1_comp'),
+      period: t('exp1_period'),
+      description: t('exp1_desc'),
+      tags: ['Offensive Security', 'PLC Security', 'Penetration Testing', 'OT Security'],
+      icon: <ShieldCheck className="w-5 h-5" aria-hidden="true" />
+    },
+    {
+      title: t('exp2_title'),
+      company: t('exp2_comp'),
+      period: t('exp2_period'),
+      description: t('exp2_desc'),
+      tags: ['Semiconductor', 'Electronics', 'Troubleshooting', 'Precision Assembly'],
+      icon: <Settings className="w-5 h-5" aria-hidden="true" />
+    },
+    {
+      title: t('exp3_title'),
+      company: t('exp3_comp'),
+      period: t('exp3_period'),
+      description: t('exp3_desc'),
+      tags: ['Electrical Equipment', 'Industrial Systems', 'Maintenance'],
+      icon: <Zap className="w-5 h-5" aria-hidden="true" />
+    }
+  ];
+
+  const PROJECTS = [
+    {
+      title: 'Aqua-Topia',
+      description: t('proj1_desc'),
+      tags: ['Shell', 'Automation', 'Infrastructure'],
+      link: 'https://github.com/attilapeterszucs/Aqua-Topia'
+    },
+    {
+      title: 'Haltless',
+      description: t('proj2_desc'),
+      tags: ['Python', 'React', 'PostgreSQL', 'Industrial IoT'],
+      live: 'https://www.haltless.io'
+    },
+    {
+      title: 'Secure-LogiX',
+      description: t('proj3_desc'),
+      tags: ['TypeScript', 'Electron.js', 'Security'],
+      link: 'https://github.com/attilapeterszucs/Secure-LogiX'
+    },
+    {
+      title: 'TraceFlow',
+      description: t('proj4_desc'),
+      tags: ['Rust', 'TUI', 'Networking', 'Security Audit'],
+      link: 'https://github.com/attilapeterszucs/TraceFlow'
+    }
+  ];
+
+  const EDUCATION = [
+    {
+      degree: t('edu1_deg'),
+      institution: t('edu1_inst'),
+      period: t('edu1_period'),
+      description: t('edu1_desc'),
+      icon: <ShieldCheck className="w-5 h-5" aria-hidden="true" />
+    },
+    {
+      degree: t('edu2_deg'),
+      institution: t('edu2_inst'),
+      period: t('edu2_period'),
+      description: t('edu2_desc'),
+      icon: <Settings className="w-5 h-5" aria-hidden="true" />
+    },
+    {
+      degree: t('edu3_deg'),
+      institution: t('edu3_inst'),
+      period: t('edu3_period'),
+      description: t('edu3_desc'),
+      icon: <Cpu className="w-5 h-5" aria-hidden="true" />
+    }
+  ];
+
+  const LANGUAGES = [
+    { name: t('lang_en'), level: t('lang1_level') },
+    { name: t('lang_hu'), level: t('lang2_level') },
+    { name: t('lang_ja'), level: t('lang3_level') },
+    { name: t('lang_ko'), level: t('lang4_level') },
+    { name: t('lang_ar'), level: t('lang5_level') }
+  ];
 
   return (
     <div className="min-h-screen bg-background selection:bg-accent selection:text-accent-foreground">
@@ -166,10 +173,25 @@ export default function App() {
           </nav>
 
           <div className="flex items-center gap-4">
+            <div className="relative group hidden sm:flex items-center">
+              <Globe className="w-4 h-4 mr-2 text-muted-foreground" aria-hidden="true" />
+              <select 
+                onChange={(e) => changeLanguage(e.target.value)} 
+                defaultValue={i18n.language}
+                className="bg-transparent text-[10px] font-mono uppercase tracking-widest outline-none cursor-pointer border-b-2 border-transparent hover:border-accent transition-colors pb-1"
+              >
+                <option className="bg-background text-foreground" value="en">EN</option>
+                <option className="bg-background text-foreground" value="hu">HU</option>
+                <option className="bg-background text-foreground" value="ja">JA</option>
+                <option className="bg-background text-foreground" value="ko">KO</option>
+                <option className="bg-background text-foreground" value="ar">AR</option>
+              </select>
+            </div>
+
             <Button variant="outline" size="sm" className="hidden sm:flex font-mono text-[10px] uppercase tracking-widest border-2" render={
               <a href="https://www.linkedin.com/in/attilapeterszucs/" target="_blank" rel="noopener noreferrer">
                 <Linkedin className="w-3 h-3 mr-2" aria-hidden="true" />
-                Connect
+                {t('nav_connect')}
               </a>
             } />
             
@@ -182,7 +204,7 @@ export default function App() {
               <SheetContent side="right" className="w-[300px] bg-background border-l-2 p-6 flex flex-col">
                 <SheetHeader className="mb-6 mt-4">
                   <SheetTitle className="font-mono font-bold uppercase tracking-widest text-left text-sm text-muted-foreground">
-                    Navigation
+                    {t('nav_navigation')}
                   </SheetTitle>
                 </SheetHeader>
                 <div className="flex flex-col gap-4">
@@ -195,10 +217,25 @@ export default function App() {
                       } />
                     } />
                   ))}
+                  <Separator className="my-2" />
+                  <div className="flex items-center gap-2 px-4">
+                    <Globe className="w-4 h-4 text-muted-foreground" aria-hidden="true" />
+                    <select 
+                      onChange={(e) => changeLanguage(e.target.value)} 
+                      defaultValue={i18n.language}
+                      className="bg-transparent text-sm font-mono uppercase tracking-widest outline-none cursor-pointer w-full py-2"
+                    >
+                      <option className="bg-background text-foreground" value="en">English (EN)</option>
+                      <option className="bg-background text-foreground" value="hu">Magyar (HU)</option>
+                      <option className="bg-background text-foreground" value="ja">日本語 (JA)</option>
+                      <option className="bg-background text-foreground" value="ko">한국어 (KO)</option>
+                      <option className="bg-background text-foreground" value="ar">العربية (AR)</option>
+                    </select>
+                  </div>
                 </div>
                 <Separator className="my-4" />
                 <div className="flex flex-col gap-4">
-                  <p className="text-[10px] font-mono uppercase text-muted-foreground tracking-widest px-4">Contact</p>
+                  <p className="text-[10px] font-mono uppercase text-muted-foreground tracking-widest px-4">{t('nav_contact')}</p>
                   <div className="flex flex-col gap-2">
                     <SheetClose asChild render={
                       <Button variant="ghost" className="justify-start font-mono text-xs w-full h-12 flex items-center gap-2" render={
@@ -243,25 +280,25 @@ export default function App() {
                 transition={{ duration: 0.6 }}
               >
                 <Badge variant="outline" className="mb-6 font-mono text-[10px] uppercase tracking-[0.2em] border-accent text-accent px-3 py-1">
-                  No system is safe
+                  {t('hero_status')}
                 </Badge>
                 <h1 className="text-4xl sm:text-5xl md:text-8xl font-bold tracking-tighter leading-[0.9] mb-8 uppercase">
-                  Cyber <span className="text-accent">Security</span> & <br className="hidden sm:block" />
-                  Industrial <span className="blueprint-line">Automation</span>
+                  {t('hero_title1')} <span className="text-accent">{t('hero_title2')}</span> {t('hero_title3')} <br className="hidden sm:block" />
+                  {t('hero_title4')} <span className="blueprint-line">{t('hero_title5')}</span>
                 </h1>
                 <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mb-10 leading-relaxed font-medium">
-                  Cyber security student and former automation technician with hands-on experience in OT security, penetration testing, and industrial equipment maintenance. Focused on bridging the gap between physical electrical systems and digital security.
+                  {t('hero_desc')}
                 </p>
                 
                 <div className="flex flex-col sm:flex-row flex-wrap gap-4">
                   <Button className="w-full sm:w-auto bg-primary text-primary-foreground hover:bg-accent transition-colors font-mono uppercase tracking-widest text-xs h-12 px-8 rounded-none" render={
                     <a href="#skills">
-                      View Technical Specs
+                      {t('hero_btn_specs')}
                     </a>
                   } />
                   <Button variant="outline" className="w-full sm:w-auto border-2 font-mono uppercase tracking-widest text-xs h-12 px-8 rounded-none" render={
                     <a href="https://www.linkedin.com/in/attilapeterszucs/" target="_blank" rel="noopener noreferrer">
-                      LinkedIn Profile
+                      {t('hero_btn_linkedin')}
                     </a>
                   } />
                 </div>
@@ -275,8 +312,8 @@ export default function App() {
           <div className="container mx-auto px-6">
             <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-4">
               <div>
-                <p className="text-[10px] font-mono uppercase tracking-[0.3em] text-accent mb-2">Professional Path</p>
-                <h2 className="text-4xl md:text-5xl font-bold tracking-tighter uppercase">Work Experience</h2>
+                <p className="text-[10px] font-mono uppercase tracking-[0.3em] text-accent mb-2">{t('exp_label')}</p>
+                <h2 className="text-4xl md:text-5xl font-bold tracking-tighter uppercase">{t('exp_title')}</h2>
               </div>
               <div className="font-mono text-[10px] text-muted-foreground text-right hidden md:block">
                 LOG_LEVEL: VERBOSE<br />
@@ -326,8 +363,8 @@ export default function App() {
           <div className="container mx-auto px-6">
             <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-4">
               <div>
-                <p className="text-[10px] font-mono uppercase tracking-[0.3em] text-accent mb-2">Portfolio</p>
-                <h2 className="text-4xl md:text-5xl font-bold tracking-tighter uppercase">Featured Projects</h2>
+                <p className="text-[10px] font-mono uppercase tracking-[0.3em] text-accent mb-2">{t('proj_label')}</p>
+                <h2 className="text-4xl md:text-5xl font-bold tracking-tighter uppercase">{t('proj_title')}</h2>
               </div>
             </div>
 
@@ -383,7 +420,7 @@ export default function App() {
               <Button variant="outline" className="border-2 font-mono uppercase tracking-widest text-xs h-12 px-8 rounded-none group" render={
                 <a href="https://github.com/attilapeterszucs" target="_blank" rel="noopener noreferrer">
                   <Github className="w-4 h-4 mr-2 group-hover:animate-pulse" aria-hidden="true" />
-                  View All on GitHub
+                  {t('proj_btn_all')}
                 </a>
               } />
             </div>
@@ -394,10 +431,10 @@ export default function App() {
         <section id="skills" className="py-24">
           <div className="container mx-auto px-6">
             <div className="max-w-3xl mb-16">
-              <p className="text-[10px] font-mono uppercase tracking-[0.3em] text-accent mb-2">Technical Stack</p>
-              <h2 className="text-4xl md:text-5xl font-bold tracking-tighter uppercase mb-6">Core Competencies</h2>
+              <p className="text-[10px] font-mono uppercase tracking-[0.3em] text-accent mb-2">{t('skills_label')}</p>
+              <h2 className="text-4xl md:text-5xl font-bold tracking-tighter uppercase mb-6">{t('skills_title')}</h2>
               <p className="text-muted-foreground">
-                Combining a foundation in electrical and automation engineering with applied computer science. Focused on securing industrial control systems and enterprise networks.
+                {t('skills_desc')}
               </p>
             </div>
 
@@ -444,10 +481,10 @@ export default function App() {
           <div className="container mx-auto px-6 relative z-10">
             <div className="flex flex-col md:flex-row gap-16">
               <div className="md:w-1/3">
-                <p className="text-[10px] font-mono uppercase tracking-[0.3em] text-accent mb-2">Academic Background</p>
-                <h2 className="text-4xl md:text-5xl font-bold tracking-tighter uppercase mb-6">Education</h2>
+                <p className="text-[10px] font-mono uppercase tracking-[0.3em] text-accent mb-2">{t('edu_label')}</p>
+                <h2 className="text-4xl md:text-5xl font-bold tracking-tighter uppercase mb-6">{t('edu_title')}</h2>
                 <p className="text-primary-foreground/60 leading-relaxed">
-                  Continuous learning is the core of my professional philosophy. From electrical foundations to advanced cyber security.
+                  {t('edu_desc')}
                 </p>
               </div>
               
@@ -477,8 +514,8 @@ export default function App() {
         <section className="py-24 border-t">
           <div className="container mx-auto px-6">
             <div className="max-w-3xl mb-16">
-              <p className="text-[10px] font-mono uppercase tracking-[0.3em] text-accent mb-2">Global Communication</p>
-              <h2 className="text-4xl md:text-5xl font-bold tracking-tighter uppercase mb-6">Languages</h2>
+              <p className="text-[10px] font-mono uppercase tracking-[0.3em] text-accent mb-2">{t('lang_label')}</p>
+              <h2 className="text-4xl md:text-5xl font-bold tracking-tighter uppercase mb-6">{t('lang_title')}</h2>
             </div>
             
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
@@ -503,27 +540,27 @@ export default function App() {
         <footer className="py-20 border-t">
           <div className="container mx-auto px-6">
             <div className="max-w-2xl">
-              <h2 className="text-4xl font-bold tracking-tighter uppercase mb-6">Let's Connect</h2>
+              <h2 className="text-4xl font-bold tracking-tighter uppercase mb-6">{t('footer_title')}</h2>
               <p className="text-muted-foreground mb-8 max-w-md">
-                Open for collaborations in Industrial Automation, Software Engineering, and Cyber Security projects.
+                {t('footer_desc')}
               </p>
               <div className="flex flex-col sm:flex-row flex-wrap gap-4">
                 <Button className="w-full sm:w-auto rounded-none font-mono uppercase tracking-widest text-xs h-12 px-8 flex items-center justify-center gap-2" render={
                   <a href="mailto:attilaszucs2002@gmail.com">
                     <Mail className="w-4 h-4" aria-hidden="true" />
-                    Email Me
+                    {t('footer_email')}
                   </a>
                 } />
                 <Button variant="outline" className="w-full sm:w-auto border-2 rounded-none font-mono uppercase tracking-widest text-xs h-12 px-8 flex items-center justify-center gap-2" render={
                   <a href="https://github.com/attilapeterszucs" target="_blank" rel="noopener noreferrer">
                     <Github className="w-4 h-4" aria-hidden="true" />
-                    GitHub
+                    {t('footer_github')}
                   </a>
                 } />
                 <Button variant="outline" className="w-full sm:w-auto border-2 rounded-none font-mono uppercase tracking-widest text-xs h-12 px-8 flex items-center justify-center gap-2" render={
                   <a href="https://www.linkedin.com/in/attilapeterszucs/" target="_blank" rel="noopener noreferrer">
                     <Linkedin className="w-4 h-4" aria-hidden="true" />
-                    LinkedIn
+                    {t('footer_linkedin')}
                   </a>
                 } />
               </div>
@@ -536,7 +573,7 @@ export default function App() {
                 <span className="font-mono font-bold tracking-tighter text-sm uppercase">Attila Peter Szucs</span>
               </div>
               <p className="text-[10px] font-mono text-muted-foreground uppercase tracking-widest">
-                © {new Date().getFullYear()} Built with React & Shadcn UI
+                © {new Date().getFullYear()} {t('footer_copy')}
               </p>
             </div>
           </div>
