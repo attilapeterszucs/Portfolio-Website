@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://ais-dev-wn3fykcigerk4bjdthn2en-299399360769.europe-west1.run.app/sitemap.xml
+Sitemap: https://www.attilapeterszucs.dev/sitemap.xml
