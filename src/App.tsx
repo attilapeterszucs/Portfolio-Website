@@ -12,6 +12,7 @@ import {
   Layers,
   Settings,
   ArrowUp,
+  Github,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -172,14 +173,32 @@ export default function App() {
                 <Separator className="my-4" />
                 <div className="flex flex-col gap-4">
                   <p className="text-[10px] font-mono uppercase text-muted-foreground tracking-widest px-4">Contact</p>
-                  <SheetClose asChild render={
-                    <Button variant="ghost" className="justify-start font-mono text-xs w-full h-12 flex items-center gap-2" render={
-                      <a href="mailto:attilaszucs2002@gmail.com">
-                        <Mail className="w-4 h-4" aria-hidden="true" />
-                        attilaszucs2002@gmail.com
-                      </a>
+                  <div className="flex flex-col gap-2">
+                    <SheetClose asChild render={
+                      <Button variant="ghost" className="justify-start font-mono text-xs w-full h-12 flex items-center gap-2" render={
+                        <a href="mailto:attilaszucs2002@gmail.com">
+                          <Mail className="w-4 h-4" aria-hidden="true" />
+                          attilaszucs2002@gmail.com
+                        </a>
+                      } />
                     } />
-                  } />
+                    <SheetClose asChild render={
+                      <Button variant="ghost" className="justify-start font-mono text-xs w-full h-12 flex items-center gap-2" render={
+                        <a href="https://github.com/attilapeterszucs" target="_blank" rel="noopener noreferrer">
+                          <Github className="w-4 h-4" aria-hidden="true" />
+                          GitHub
+                        </a>
+                      } />
+                    } />
+                    <SheetClose asChild render={
+                      <Button variant="ghost" className="justify-start font-mono text-xs w-full h-12 flex items-center gap-2" render={
+                        <a href="https://be.linkedin.com/in/attilapeterszucs" target="_blank" rel="noopener noreferrer">
+                          <Linkedin className="w-4 h-4" aria-hidden="true" />
+                          LinkedIn
+                        </a>
+                      } />
+                    } />
+                  </div>
                 </div>
               </SheetContent>
             </Sheet>
