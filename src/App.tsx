@@ -150,7 +150,7 @@ export default function App() {
       <header className={`fixed top-0 w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-background/80 backdrop-blur-md border-b py-3' : 'bg-transparent py-6'}`}>
         <div className="container mx-auto px-6 flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <span className="font-mono font-bold tracking-tighter text-lg uppercase hidden sm:block">Attila Peter Szucs</span>
+            <span className="font-mono font-bold tracking-tighter text-lg uppercase">Attila Peter Szucs</span>
           </div>
 
           <nav className="hidden md:flex items-center gap-8">
