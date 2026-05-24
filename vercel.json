@@ -1,0 +1,5 @@
+{
+  "rewrites": [
+    { "source": "/blog/:match*", "destination": "https://attilapeterszucs.dev/blog/:match*" }
+  ]
+}
