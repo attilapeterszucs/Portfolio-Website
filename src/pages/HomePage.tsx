@@ -39,8 +39,8 @@ export default function HomePage() {
       title: t('exp1_title'),
       company: t('exp1_comp'),
       period: t('exp1_period'),
-      dateStart: '2023-01-01',
-      dateEnd: 'Present',
+      dateStart: '2026-02-09',
+      dateEnd: '2026-05-08',
       description: t('exp1_desc'),
       technologies: ['Offensive Security', 'PLC Security', 'Penetration Testing', 'OT Security'],
       icon: <ShieldCheck className="w-5 h-5" aria-hidden="true" />
@@ -171,15 +171,9 @@ export default function HomePage() {
       {/* Experience Section */}
       <section id="experience" className="py-24 bg-secondary/30 border-y">
         <div className="container mx-auto px-6">
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-4">
-            <div>
-              <p className="text-[10px] font-mono uppercase tracking-[0.3em] text-accent mb-2">{t('exp_label')}</p>
-              <h2 className="text-4xl md:text-5xl font-bold tracking-tighter uppercase">{t('exp_title')}</h2>
-            </div>
-            <div className="font-mono text-[10px] text-muted-foreground text-right hidden md:block">
-              LOG_LEVEL: VERBOSE<br />
-              TIMESTAMP: {new Date().toISOString()}
-            </div>
+          <div className="mb-16">
+            <p className="text-[10px] font-mono uppercase tracking-[0.3em] text-accent mb-2">{t('exp_label')}</p>
+            <h2 className="text-4xl md:text-5xl font-bold tracking-tighter uppercase">{t('exp_title')}</h2>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
