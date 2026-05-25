@@ -129,6 +129,12 @@ export default function HomePage() {
     { name: t('lang_hu'), level: t('lang2_level') },
   ];
 
+  const INTERESTED_LANGUAGES = [
+    { name: t('lang_ja'), level: t('lang_interested') },
+    { name: t('lang_ko'), level: t('lang_interested') },
+    { name: t('lang_ar'), level: t('lang_interested') },
+  ];
+
   return (
     <>
       {/* Hero Section */}
@@ -397,6 +403,25 @@ export default function HomePage() {
                 <div className="text-[10px] font-mono text-muted-foreground uppercase">{lang.level}</div>
               </motion.div>
             ))}
+          </div>
+
+          <div className="mt-12">
+            <p className="text-[10px] font-mono uppercase tracking-[0.3em] text-accent mb-6">{t('lang_interested_label')}</p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+              {INTERESTED_LANGUAGES.map((lang, index) => (
+                <motion.div
+                  key={lang.name}
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                  className="p-6 bg-secondary/20 border-2 border-transparent hover:border-accent/50 transition-all"
+                >
+                  <div className="text-sm font-bold uppercase tracking-tight mb-1">{lang.name}</div>
+                  <div className="text-[10px] font-mono text-muted-foreground uppercase">{lang.level}</div>
+                </motion.div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
