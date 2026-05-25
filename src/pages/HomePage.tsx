@@ -9,6 +9,7 @@ import {
   Settings,
   Github,
   ExternalLink,
+  GraduationCap,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -115,6 +116,15 @@ export default function HomePage() {
       dateEnd: 'Present',
       description: t('edu1_desc'),
       icon: <ShieldCheck className="w-5 h-5" aria-hidden="true" />
+    },
+    {
+      degree: t('edu4_deg'),
+      institution: t('edu4_inst'),
+      period: t('edu4_period'),
+      dateStart: '2024-07-01',
+      dateEnd: '2024-07-31',
+      description: t('edu4_desc'),
+      icon: <GraduationCap className="w-5 h-5" aria-hidden="true" />
     },
     {
       degree: t('edu2_deg'),

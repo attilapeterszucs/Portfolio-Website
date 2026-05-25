@@ -32,6 +32,7 @@ export default function AboutPage() {
 
   const TIMELINE = [
     { year: '2026', event: t('about_tl5') },
+    { year: '2024', event: t('about_tl6') },
     { year: '2023', event: t('about_tl4') },
     { year: '2022', event: t('about_tl3') },
     { year: '2020', event: t('about_tl2') },
