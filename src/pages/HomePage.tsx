@@ -69,6 +69,18 @@ export default function HomePage() {
 
   const PROJECTS = [
     {
+      title: 'Galvanizing Plant',
+      description: t('proj5_desc'),
+      tags: ['PLC', 'Industrial Automation', 'OT Security', 'Cyber3Lab'],
+      link: 'https://github.com/attilapeterszucs/Galvanizing-Plant'
+    },
+    {
+      title: 'Cipher Bay',
+      description: t('proj6_desc'),
+      tags: ['CODESYS', 'Soft PLC', 'Docker', 'Drone Automation', 'Cyber3Lab'],
+      link: 'https://github.com/attilapeterszucs/Cipher-Bay'
+    },
+    {
       title: 'Aqua-Topia',
       description: t('proj1_desc'),
       tags: ['Shell', 'Automation', 'Infrastructure'],
@@ -77,7 +89,7 @@ export default function HomePage() {
     {
       title: 'Haltless',
       description: t('proj2_desc'),
-      tags: ['Python', 'React', 'PostgreSQL', 'Industrial IoT'],
+      tags: ['Python', 'OPC-UA', 'Modbus TCP', 'Edge Computing', 'Industrial IoT'],
       live: 'https://www.haltless.io'
     },
     {
