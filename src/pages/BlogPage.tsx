@@ -2,14 +2,78 @@ import { motion } from 'motion/react';
 import { useTranslation } from 'react-i18next';
 import { Badge } from '@/components/ui/badge';
 import hack1 from '@/assets/images/blogs/htf/hack1.png';
+import hug1 from '@/assets/images/blogs/huggingface/hug1.png';
+import internshipEvent from '@/assets/images/blogs/internship-event/internship-event.png';
+import tnm1 from '@/assets/images/blogs/first-tech-and-meet/firsttnm1.png';
+import ddos1 from '@/assets/images/blogs/national-anti-ddos/national-anti-ddos1.png';
+import flutter1 from '@/assets/images/blogs/flutter/flutter1.png';
+import nato1 from '@/assets/images/blogs/nato-cyber-defense/nato-cyber-defense1.png';
+import era1 from '@/assets/images/blogs/new-era-in-technology/new-era1.png';
+import home1 from '@/assets/images/blogs/home-away-from-home/home1.png';
 
 const BLOG_POSTS = [
   {
     slug: 'htf-2025',
     image: hack1,
     titleKey: 'blog_htf_title',
-    date: '2025-05-20',
+    date: '2025-05',
     tags: ['Hackathon', 'Linux', 'DevOps'],
+  },
+  {
+    slug: 'huggingface-local-llms',
+    image: hug1,
+    titleKey: 'blog_hf_title',
+    date: '2025-11',
+    tags: ['AI', 'Local LLM', 'Hugging Face'],
+  },
+  {
+    slug: 'internship-market-2025',
+    image: internshipEvent,
+    titleKey: 'blog_ie_title',
+    date: '2025-10',
+    tags: ['HOWEST', 'Internship', 'Networking'],
+  },
+  {
+    slug: 'first-tech-and-meet-2025',
+    image: tnm1,
+    titleKey: 'blog_tnm_title',
+    date: '2025-10',
+    tags: ['Cyber Security', 'OT/IT', 'NIS2'],
+  },
+  {
+    slug: 'threat-intelligence-ccb',
+    image: ddos1,
+    titleKey: 'blog_ti_title',
+    date: '2025-10',
+    tags: ['Threat Intelligence', 'CCB', 'Cyber Security'],
+  },
+  {
+    slug: 'flutter-cross-platform',
+    image: flutter1,
+    titleKey: 'blog_fl_title',
+    date: '2025-11',
+    tags: ['Flutter', 'Dart', 'Cross-Platform'],
+  },
+  {
+    slug: 'nato-cyber-defense',
+    image: nato1,
+    titleKey: 'blog_nato_title',
+    date: '2025-12',
+    tags: ['NATO', 'Cyber Defense', 'Zero Trust'],
+  },
+  {
+    slug: 'new-era-ai-llms',
+    image: era1,
+    titleKey: 'blog_ai_title',
+    date: '2025-12',
+    tags: ['AI', 'LLMs', 'DeepSeek'],
+  },
+  {
+    slug: 'flanders-international-talent',
+    image: home1,
+    titleKey: 'blog_home_title',
+    date: '2025-12',
+    tags: ['Flanders', 'Career Growth', 'Innovation'],
   },
 ];
 
@@ -44,7 +108,7 @@ export default function BlogPage() {
       {/* Posts Grid */}
       <section className="pb-24">
         <div className="container mx-auto px-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {BLOG_POSTS.map((post, index) => (
               <motion.a
                 key={post.slug}
