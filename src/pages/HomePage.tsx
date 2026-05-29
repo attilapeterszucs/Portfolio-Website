@@ -10,6 +10,7 @@ import {
   Github,
   ExternalLink,
   GraduationCap,
+  Mic,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -318,6 +319,49 @@ export default function HomePage() {
               </a>
             } />
           </div>
+        </div>
+      </section>
+
+      {/* Podcast Section */}
+      <section id="podcast" className="py-24 bg-secondary/30 border-y">
+        <div className="container mx-auto px-6">
+          <div className="max-w-3xl mb-16">
+            <p className="text-[10px] font-mono uppercase tracking-[0.3em] text-accent mb-2">{t('podcast_label')}</p>
+            <h2 className="text-4xl md:text-5xl font-bold tracking-tighter uppercase">{t('podcast_title')}</h2>
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            <Card className="rounded-none border-2 bg-background hover:border-accent transition-colors group relative overflow-hidden">
+              <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-100 transition-opacity text-accent">
+                <Mic className="w-5 h-5" aria-hidden="true" />
+              </div>
+              <CardHeader>
+                <CardTitle className="text-xl font-bold uppercase tracking-tight">{t('podcast_title')}</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-sm text-muted-foreground mb-8 leading-relaxed max-w-3xl">
+                  {t('podcast_desc')}
+                </p>
+                <iframe
+                  data-testid="embed-iframe"
+                  style={{ borderRadius: '12px' }}
+                  src="https://open.spotify.com/embed/episode/0isvQpayyJlffO1ZO5zFWD?utm_source=generator&theme=0&t=0"
+                  width="100%"
+                  height="152"
+                  frameBorder="0"
+                  allowFullScreen
+                  allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                  loading="lazy"
+                  title={t('podcast_title')}
+                />
+              </CardContent>
+            </Card>
+          </motion.div>
         </div>
       </section>
 

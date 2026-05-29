@@ -44,6 +44,7 @@ export default function App() {
     { name: t('nav_overview'), href: '#overview' },
     { name: t('nav_experience'), href: '#experience' },
     { name: t('nav_projects'), href: '#projects' },
+    { name: t('nav_podcast'), href: '#podcast' },
     { name: t('nav_skills'), href: '#skills' },
     { name: t('nav_education'), href: '#education' },
   ];
