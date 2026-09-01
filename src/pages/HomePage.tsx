@@ -114,7 +114,7 @@ export default function HomePage() {
       institution: t('edu1_inst'),
       period: t('edu1_period'),
       dateStart: '2023-09-01',
-      dateEnd: 'Present',
+      dateEnd: '2026-06-01',
       description: t('edu1_desc'),
       icon: <ShieldCheck className="w-5 h-5" aria-hidden="true" />
     },

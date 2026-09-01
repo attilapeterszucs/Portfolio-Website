@@ -31,12 +31,13 @@ export default function AboutPage() {
   ];
 
   const TIMELINE = [
-    { year: '2026', event: t('about_tl5') },
-    { year: '2024', event: t('about_tl6') },
-    { year: '2023', event: t('about_tl4') },
-    { year: '2022', event: t('about_tl3') },
-    { year: '2020', event: t('about_tl2') },
-    { year: '2017', event: t('about_tl1') },
+    { key: 'about_tl7', year: '2026' },
+    { key: 'about_tl5', year: '2026' },
+    { key: 'about_tl6', year: '2024' },
+    { key: 'about_tl4', year: '2023' },
+    { key: 'about_tl3', year: '2022' },
+    { key: 'about_tl2', year: '2020' },
+    { key: 'about_tl1', year: '2017' },
   ];
 
   return (
@@ -128,7 +129,7 @@ export default function AboutPage() {
           <div className="space-y-12 max-w-2xl">
             {TIMELINE.map((item, index) => (
               <motion.div
-                key={item.year}
+                key={item.key}
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ delay: index * 0.1 }}
@@ -141,7 +142,7 @@ export default function AboutPage() {
                 <div className="w-6 h-6 rounded-full bg-accent flex-shrink-0 mt-1 z-10" />
                 <div>
                   <div className="text-[10px] font-mono text-primary-foreground/50 mb-1 uppercase tracking-widest">{item.year}</div>
-                  <p className="text-primary-foreground/80 leading-relaxed">{item.event}</p>
+                  <p className="text-primary-foreground/80 leading-relaxed">{t(item.key)}</p>
                 </div>
               </motion.div>
             ))}
